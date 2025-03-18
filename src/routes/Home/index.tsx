@@ -175,10 +175,10 @@ const Home = () => {
                 {/* 右侧图片区域 */}
                 <div className="w-full lg:w-1/2">
                   <div className="relative">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg blur-lg opacity-30"></div>
-                    <div className="relative rounded-lg shadow-xl overflow-hidden">
+                    <div className="absolute rounded-lg blur-lg opacity-30"></div>
+                    <div className="relative rounded-lg overflow-hidden">
                       <img
-                        src="/assets/banner.png"
+                        src="/assets/logo-source.webp"
                         alt="Mind Link Preview"
                         className="w-full h-auto"
                       />
