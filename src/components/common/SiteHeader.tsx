@@ -1,4 +1,4 @@
-import { BotMessageSquare, Cog } from 'lucide-react';
+import { BotMessageSquare, Cog, Github } from 'lucide-react';
 import { DarkModeBtn, useDarkMode } from '~/packages/DarkMode';
 
 export const SiteHeader = () => {
@@ -17,6 +17,7 @@ export const SiteHeader = () => {
           </li>
           <li>
             <a>
+              {/* https://github.com/simple-icons/simple-icons */}
               <svg
                 className="h-5 w-5 fill-current"
                 role="img"
