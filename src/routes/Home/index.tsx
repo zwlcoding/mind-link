@@ -65,7 +65,7 @@ const Home = () => {
 
       {/* 主内容区域 - 使用 flex-grow 确保它占据所有可用空间 */}
       <main className="flex-grow">
-        <div className="bg-white h-full">
+        <div className="h-full">
           <div className="relative isolate px-6 pt-14 lg:px-8 h-full">
             {/* 背景装饰元素 - 调整位置与z-index */}
             <div
@@ -176,7 +176,7 @@ const Home = () => {
                 <div className="w-full lg:w-1/2">
                   <div className="relative">
                     <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg blur-lg opacity-30"></div>
-                    <div className="relative bg-white rounded-lg shadow-xl overflow-hidden">
+                    <div className="relative rounded-lg shadow-xl overflow-hidden">
                       <img
                         src="/assets/banner.png"
                         alt="Mind Link Preview"
@@ -207,7 +207,7 @@ const Home = () => {
       </main>
 
       {/* 页脚 - 始终固定在底部 */}
-      <footer className="bg-gray-50 border-t border-gray-200 mt-auto">
+      <footer className="mt-auto">
         <div className="container mx-auto px-6 py-4">
           <div className="flex flex-col sm:flex-row justify-between items-center">
             <div className="flex items-center mb-4 sm:mb-0">
