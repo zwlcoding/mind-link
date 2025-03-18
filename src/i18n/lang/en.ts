@@ -30,6 +30,17 @@ const langConfig = {
 
     // Footer
     footer_copyright: '© {{year}} Mind Link',
+
+    // Common elements
+    common_loading: 'Loading',
+    common_fetch_error: 'System busy, please try again later',
+
+    // Waitlist
+    join_waitlist: 'Join Waitlist',
+    join_waitlist_success: 'Successfully joined the waitlist',
+
+    // Form validation
+    form_validator_email: 'Invalid email format',
   },
 };
 
