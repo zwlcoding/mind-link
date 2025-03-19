@@ -1,19 +1,13 @@
-import { CreateNewChat } from '~/components/common/CreateNewChat';
 
 import { createBrowserRouter } from 'react-router';
 
+import {
+  ChatBox,
+  ChatLayout,
+  ChatNewCreate,
+  ChatSetting,
+} from './Chat';
 import Home from "./Home";
-import App from './App';
-
-// export const Routing = () => {
-//   return (
-//     <Routes>
-//       <Route index path="/" element={<CreateNewChat />}></Route>
-//       <Route path="/chat/:uuid" element={<App />}></Route>
-//     </Routes>
-//   );
-// };
-
 
 export const RouterConfig = createBrowserRouter([
   {
@@ -21,6 +15,12 @@ export const RouterConfig = createBrowserRouter([
     element: <Home />
   },
   {
-    path: '/chat'
+    path: '/chat',
+    element: <ChatLayout />,
+    children: [
+      { index: true, element: <ChatNewCreate /> },
+      { path: ':uuid', element: <ChatBox /> },
+      { path: 'setting', element: <ChatSetting /> }
+    ]
   }
 ]);
