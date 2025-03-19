@@ -27,6 +27,7 @@ const Home = () => {
     let did = await getFingerprint();
     setFetching(true);
     let [err, res] = await sendWaitListEmail({
+      currentLang: i18n.language,
       email: data.email,
       did: did
     });
