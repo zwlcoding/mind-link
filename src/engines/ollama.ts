@@ -1,7 +1,5 @@
 // import { Ollama } from 'ollama/browser';
 
-
-
 // export const OLLAMA_BASE_URL = import.meta.env.PUBLIC_OLLAMA_BASE_URL || 'http://127.0.0.1:11434';
 
 // const customFetch = (input: RequestInfo | URL, init?: RequestInit) => {
@@ -19,12 +17,10 @@
 //   },
 // });
 
-
-import { ChatOllama } from "@langchain/ollama"
+import { ChatOllama } from '@langchain/ollama';
 
 const ollama = new ChatOllama({
-  model: "deepseek-r1:14b"
+  model: 'deepseek-r1:14b',
 });
-
 
 export default ollama;

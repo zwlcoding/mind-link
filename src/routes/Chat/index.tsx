@@ -1,7 +1,7 @@
-import { Layout } from "~/components/Layout";
-import { Outlet } from "react-router";
-import {SiteHeader} from '~/components/SiteHeader'
-import {StatusBar} from '~/features/StatusBar'
+import { Layout } from '~/components/Layout';
+import { Outlet } from 'react-router';
+import { SiteHeader } from '~/components/SiteHeader';
+import { StatusBar } from '~/features/StatusBar';
 
 export const ChatLayout = () => {
   return (
@@ -17,6 +17,6 @@ export const ChatLayout = () => {
       </Layout.Footer>
     </Layout>
   );
-}
+};
 
-export default ChatLayout
+export default ChatLayout;

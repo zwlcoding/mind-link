@@ -6,4 +6,4 @@ export const ChatNewCreate = () => {
   return <Navigate to={`/chat/${newChatId}`} replace />;
 };
 
-export default ChatNewCreate
+export default ChatNewCreate;

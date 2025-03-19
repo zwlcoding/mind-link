@@ -8,7 +8,12 @@ interface CodeProps extends PropsWithChildren {
   className?: string;
 }
 
-export const CustomCode = ({ node, className, children, ...props }: CodeProps) => {
+export const CustomCode = ({
+  node,
+  className,
+  children,
+  ...props
+}: CodeProps) => {
   const [copied, setCopied] = useState(false);
   const match = /language-(\w+)/.exec(className || '');
   const language = match ? match[1] : '';

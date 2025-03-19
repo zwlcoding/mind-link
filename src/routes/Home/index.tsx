@@ -1,36 +1,33 @@
-import { useForm } from "react-hook-form";
-import { useTranslation } from "react-i18next"
-import { getFingerprint } from '@thumbmarkjs/thumbmarkjs'
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import { getFingerprint } from '@thumbmarkjs/thumbmarkjs';
 import { toast } from 'react-toastify';
-import { sendWaitListEmail } from '~/api'
+import { sendWaitListEmail } from '~/api';
 import { useState } from 'react';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 
 const Home = () => {
-
-
   const [fetching, setFetching] = useState(false);
 
-  const { t, i18n } = useTranslation()
+  const { t, i18n } = useTranslation();
 
   const toggleLanguage = () => {
     const currentLang = i18n.language;
     const newLang = currentLang === 'zh' ? 'en' : 'zh';
     i18n.changeLanguage(newLang);
-  }
+  };
 
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = async (data: any) => {
-
-    if (fetching) return
+    if (fetching) return;
 
     let did = await getFingerprint();
     setFetching(true);
     let [err, res] = await sendWaitListEmail({
       currentLang: i18n.language,
       email: data.email,
-      did: did
+      did: did,
     });
     console.log(err, res);
 
@@ -44,14 +41,14 @@ const Home = () => {
     // @ts-ignore
     if (res) {
       if (res.code === 0) {
-        toast.success(t('join_waitlist_success'))
+        toast.success(t('join_waitlist_success'));
       } else {
-        toast.error(res.msg)
+        toast.error(res.msg);
       }
     }
 
     reset();
-  }
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -89,7 +86,9 @@ const Home = () => {
               <div className="flex flex-col-reverse lg:flex-row items-center gap-12">
                 {/* 左侧文本区域 */}
                 <div className="flex flex-col items-start w-full lg:w-1/2 space-y-6">
-                  <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 leading-tight">{t('home_title')}</h1>
+                  <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
+                    {t('home_title')}
+                  </h1>
                   <h2 className="text-4xl md:text-4xl font-bold tracking-tight text-gray-900 leading-tight">
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
                       {t('home_subtitle')}
@@ -107,33 +106,68 @@ const Home = () => {
                       <div className="join">
                         <div>
                           <label className="input validator join-item">
-                            <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></g></svg>
-                            <input {...register("email")} type="email" placeholder="mail@site.com" required />
+                            <svg
+                              className="h-[1em] opacity-50"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                            >
+                              <g
+                                strokeLinejoin="round"
+                                strokeLinecap="round"
+                                strokeWidth="2.5"
+                                fill="none"
+                                stroke="currentColor"
+                              >
+                                <rect
+                                  width="20"
+                                  height="16"
+                                  x="2"
+                                  y="4"
+                                  rx="2"
+                                ></rect>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                              </g>
+                            </svg>
+                            <input
+                              {...register('email')}
+                              type="email"
+                              placeholder="mail@site.com"
+                              required
+                            />
                           </label>
-                          <div className="validator-hint hidden">{t('form_validator_email')}</div>
+                          <div className="validator-hint hidden">
+                            {t('form_validator_email')}
+                          </div>
                         </div>
                         <button className="btn btn-neutral join-item">
-                          {
-                            fetching ? <><span className="loading loading-spinner"></span> {t('common_loading')}</> : <>{t('join_waitlist')}</>
-                          }
+                          {fetching ? (
+                            <>
+                              <span className="loading loading-spinner"></span>{' '}
+                              {t('common_loading')}
+                            </>
+                          ) : (
+                            <>{t('join_waitlist')}</>
+                          )}
                         </button>
                       </div>
                     </form>
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-4 mt-4">
-
-                    {
-                      import.meta.env.PROD ?
-                        <button className="btn btn-neutral btn-xl" disabled={true}>
+                    {import.meta.env.PROD ? (
+                      <button
+                        className="btn btn-neutral btn-xl"
+                        disabled={true}
+                      >
+                        {t('home_try_now')}
+                      </button>
+                    ) : (
+                      <Link to={'/chat'}>
+                        <button className="btn btn-neutral btn-xl">
                           {t('home_try_now')}
-                        </button> :
-                        <Link to={'/chat'}>
-                          <button className="btn btn-neutral btn-xl">
-                            {t('home_try_now')}
-                          </button>
-                        </Link>
-                    }
+                        </button>
+                      </Link>
+                    )}
 
                     <a
                       href="https://github.com/zwlcoding/mind-link"
@@ -152,33 +186,55 @@ const Home = () => {
                     </a>
                   </div>
 
-
-
                   {/* 添加特性指标 */}
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-8 py-6">
                     <div className="flex flex-col">
-                      <span className="text-3xl font-bold text-indigo-600">100%</span>
-                      <span className="text-gray-600">{t('feature_opensource')}</span>
+                      <span className="text-3xl font-bold text-indigo-600">
+                        100%
+                      </span>
+                      <span className="text-gray-600">
+                        {t('feature_opensource')}
+                      </span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-3xl font-bold text-indigo-600">{t('feature_privacy')}</span>
-                      <span className="text-gray-600">{t('feature_privacy_desc')}</span>
+                      <span className="text-3xl font-bold text-indigo-600">
+                        {t('feature_privacy')}
+                      </span>
+                      <span className="text-gray-600">
+                        {t('feature_privacy_desc')}
+                      </span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-3xl font-bold text-indigo-600">{t('feature_rag')}</span>
-                      <span className="text-gray-600">{t('feature_rag_desc')}</span>
+                      <span className="text-3xl font-bold text-indigo-600">
+                        {t('feature_rag')}
+                      </span>
+                      <span className="text-gray-600">
+                        {t('feature_rag_desc')}
+                      </span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-3xl font-bold text-indigo-600">{t('feature_mcp')}</span>
-                      <span className="text-gray-600">{t('feature_mcp_desc')}</span>
+                      <span className="text-3xl font-bold text-indigo-600">
+                        {t('feature_mcp')}
+                      </span>
+                      <span className="text-gray-600">
+                        {t('feature_mcp_desc')}
+                      </span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-3xl font-bold text-indigo-600">{t('feature_online')}</span>
-                      <span className="text-gray-600">{t('feature_online_desc')}</span>
+                      <span className="text-3xl font-bold text-indigo-600">
+                        {t('feature_online')}
+                      </span>
+                      <span className="text-gray-600">
+                        {t('feature_online_desc')}
+                      </span>
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-3xl font-bold text-indigo-600">{t('feature_compatible')}</span>
-                      <span className="text-gray-600">{t('feature_compatible_desc')}</span>
+                      <span className="text-3xl font-bold text-indigo-600">
+                        {t('feature_compatible')}
+                      </span>
+                      <span className="text-gray-600">
+                        {t('feature_compatible_desc')}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -222,7 +278,11 @@ const Home = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex flex-col sm:flex-row justify-between items-center">
             <div className="flex items-center mb-4 sm:mb-0">
-              <img src="/assets/logo-mini.png" alt="Mind Link Logo" className="h-6 w-auto mr-2" />
+              <img
+                src="/assets/logo-mini.png"
+                alt="Mind Link Logo"
+                className="h-6 w-auto mr-2"
+              />
               <span className="text-gray-600 text-sm">
                 {t('footer_copyright', { year: new Date().getFullYear() })}
               </span>
@@ -249,7 +309,7 @@ const Home = () => {
         </div>
       </footer>
     </div>
-  )
-}
+  );
+};
 
 export default Home;

@@ -1,11 +1,9 @@
 import type { ImgHTMLAttributes } from 'react';
 
-
 interface CustomImgProps extends ImgHTMLAttributes<HTMLImageElement> {
   alt?: string;
   node?: any;
 }
-
 
 export const CustomImg = ({ node, alt, ...props }: CustomImgProps) => {
   return (

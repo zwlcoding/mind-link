@@ -7,7 +7,8 @@ const langConfig = {
     home_title: 'Mind Link',
     home_subtitle: 'AI Chat Assistant',
     home_opensource: 'Completely Open Source and Free',
-    home_description: 'Explore the unlimited possibilities of AI. Mind Link offers you a powerful AI interaction experience, completely free and open source, making technological innovation accessible.',
+    home_description:
+      'Explore the unlimited possibilities of AI. Mind Link offers you a powerful AI interaction experience, completely free and open source, making technological innovation accessible.',
     home_try_now: 'Try Now',
     home_github_source: 'GitHub',
 

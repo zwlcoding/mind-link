@@ -7,7 +7,8 @@ const langConfig = {
     home_title: 'Mind Link',
     home_subtitle: 'AI聊天助手',
     home_opensource: '完全开源且免费',
-    home_description: '探索AI的无限可能，Mind Link为您提供强大的AI交互体验，完全免费且开源，让科技创新触手可及。',
+    home_description:
+      '探索AI的无限可能，Mind Link为您提供强大的AI交互体验，完全免费且开源，让科技创新触手可及。',
     home_try_now: '立即体验',
     home_github_source: 'GitHub',
 
@@ -40,8 +41,6 @@ const langConfig = {
 
     // 等候列表
     form_validator_email: '邮箱格式不对',
-
-
   },
 };
 

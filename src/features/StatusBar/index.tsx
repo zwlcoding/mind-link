@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useMessageStore } from '~/store/messages';
-import {useStatusBar} from './hooks';
+import { useStatusBar } from './hooks';
 
 export const StatusBar = () => {
   const { isLoading, messages } = useMessageStore();
