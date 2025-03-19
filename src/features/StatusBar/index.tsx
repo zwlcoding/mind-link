@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { useMessageStore } from '~/store/messages';
-import useStatusBar from './hooks';
+import {useStatusBar} from './hooks';
 
-const StatusBar = () => {
+export const StatusBar = () => {
   const { isLoading, messages } = useMessageStore();
   const { isOnline, isRunningLen } = useStatusBar();
   const { t } = useTranslation();
@@ -30,5 +30,3 @@ const StatusBar = () => {
     </>
   );
 };
-
-export default StatusBar;

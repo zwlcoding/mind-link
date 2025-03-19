@@ -9,7 +9,7 @@ interface SidebarProps {
   defaultOpen?: boolean; // 新增: 控制侧边栏默认状态
 }
 
-export const ChatSidebar = ({
+export const SiteSidebar = ({
   className = '',
   children,
   onCreateNewChat,

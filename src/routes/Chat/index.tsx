@@ -1,30 +1,22 @@
-// import './index.less';
-// import { ChatSidebar } from '~/components/common/ChatSidebar';
-// // import Aside from '~/components/Aside'
-// import { Article } from '~/components/ui/Article';
-// import { Chat } from '~/features/Chat';
-// import { ChatList } from '~/features/ChatList';
-// // import ModelConfig from '~/features/ModelConfig'
+import { Layout } from "~/components/Layout";
+import { Outlet } from "react-router";
+import {SiteHeader} from '~/components/SiteHeader'
+import {StatusBar} from '~/features/StatusBar'
 
-// const Index = () => {
-//   return (
-//     <>
-//       <div className="flex flex-1 overflow-hidden">
-//         <ChatSidebar>
-//           <ChatList />
-//         </ChatSidebar>
-//         <Article>
-//           <Chat />
-//         </Article>
-//       </div>
-//     </>
-//   );
-// };
+export const ChatLayout = () => {
+  return (
+    <Layout>
+      <Layout.Header>
+        <SiteHeader />
+      </Layout.Header>
+      <Layout.Main>
+        <Outlet />
+      </Layout.Main>
+      <Layout.Footer>
+        <StatusBar />
+      </Layout.Footer>
+    </Layout>
+  );
+}
 
-// export default Index;
-
-
-export { ChatLayout } from './pages/ChatLayout';
-export { ChatNewCreate } from './pages/ChatNewCreate';
-export { ChatBox } from './pages/ChatBox';
-export { ChatSetting } from './pages/ChatSetting';
+export default ChatLayout

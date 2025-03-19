@@ -1,26 +1,18 @@
-
+import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router';
-
-import {
-  ChatBox,
-  ChatLayout,
-  ChatNewCreate,
-  ChatSetting,
-} from './Chat';
-import Home from "./Home";
 
 export const RouterConfig = createBrowserRouter([
   {
     path: "/",
-    element: <Home />
+    Component: lazy(()=> import('./Home'))
   },
   {
     path: '/chat',
-    element: <ChatLayout />,
+    Component: lazy(()=> import('./Chat/index')),
     children: [
-      { index: true, element: <ChatNewCreate /> },
-      { path: ':uuid', element: <ChatBox /> },
-      { path: 'setting', element: <ChatSetting /> }
+      { index: true, Component: lazy(()=> import('./Chat/ChatNewCreate')) },
+      { path: ':uuid', Component: lazy(()=> import('./Chat/ChatBox')) },
+      { path: 'setting', Component: lazy(()=> import('./Chat/ChatSetting')) }
     ]
   }
 ]);

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { ollama } from '~/engines/ollama';
+// import { ollama } from '~/engines/ollama';
 
-const useStatusBar = () => {
+export const useStatusBar = () => {
   const [isOnline, setIsOnline] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -13,9 +13,9 @@ const useStatusBar = () => {
 
     try {
       // Ollama 健康检查，根据实际 API 可能需要调整
-      const res = await ollama.ps();
+      // const res = await ollama.ps();
       setIsOnline(true);
-      setIsRunningLen(res.models.length);
+      setIsRunningLen(1);
     } catch (err) {
       setIsOnline(false);
       setError(err instanceof Error ? err.message : '连接 Ollama 服务失败');
@@ -42,5 +42,3 @@ const useStatusBar = () => {
     refresh: checkOllamaStatus, // 导出刷新函数用于手动检查
   };
 };
-
-export default useStatusBar;

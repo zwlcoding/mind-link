@@ -1,22 +1,23 @@
-import { BotMessageSquare, Cog, Github } from 'lucide-react';
+import { BotMessageSquare, Cog } from 'lucide-react';
 import { DarkModeBtn, useDarkMode } from '~/packages/DarkMode';
+import {Link} from 'react-router'
 
 export const SiteHeader = () => {
   const { toggleDarkMode } = useDarkMode();
   return (
     <header className="navbar bg-base-100 border-b border-base-300">
       <div className="flex-1">
-        <span className="btn btn-ghost text-xl hidden md:inline-flex">MindLink</span>
+        <Link to={'/'} className="btn btn-ghost text-xl hidden md:inline-flex">MindLink</Link>
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal">
           <li className="md:hidden">
-            <a>
+            <Link to={'/chat'}>
               <BotMessageSquare className="h-5 w-5" />
-            </a>
+            </Link>
           </li>
           <li>
-            <a>
+            <a href='https://github.com/zwlcoding/mind-link'>
               {/* https://github.com/simple-icons/simple-icons */}
               <svg
                 className="h-5 w-5 fill-current"

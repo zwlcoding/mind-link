@@ -3,7 +3,8 @@ import { useTranslation } from "react-i18next"
 import { getFingerprint } from '@thumbmarkjs/thumbmarkjs'
 import { toast } from 'react-toastify';
 import { sendWaitListEmail } from '~/api'
-import {useState} from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router'
 
 const Home = () => {
 
@@ -20,9 +21,9 @@ const Home = () => {
 
   const { register, handleSubmit, reset } = useForm();
 
-  const onSubmit = async(data: any) => {
+  const onSubmit = async (data: any) => {
 
-    if(fetching) return
+    if (fetching) return
 
     let did = await getFingerprint();
     setFetching(true);
@@ -41,10 +42,10 @@ const Home = () => {
     }
 
     // @ts-ignore
-    if (res){
-      if(res.code === 0){
+    if (res) {
+      if (res.code === 0) {
         toast.success(t('join_waitlist_success'))
-      }else{
+      } else {
         toast.error(res.msg)
       }
     }
@@ -121,9 +122,18 @@ const Home = () => {
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-4 mt-4">
-                    <button className="btn btn-neutral btn-xl" disabled={true}>
-                      {t('home_try_now')}
-                    </button>
+
+                    {
+                      import.meta.env.PROD ?
+                        <button className="btn btn-neutral btn-xl" disabled={true}>
+                          {t('home_try_now')}
+                        </button> :
+                        <Link to={'/chat'}>
+                          <button className="btn btn-neutral btn-xl">
+                            {t('home_try_now')}
+                          </button>
+                        </Link>
+                    }
 
                     <a
                       href="https://github.com/zwlcoding/mind-link"
