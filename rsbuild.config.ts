@@ -20,7 +20,7 @@ export default defineConfig({
         head: true,
         append: false,
         attrs: {
-          defer: true,
+          async: true,
           'data-website-id': '69fb1455-48a9-42a7-bb7b-1dd5a94955d3',
           src: 'https://cloud.umami.is/script.js'
         }
